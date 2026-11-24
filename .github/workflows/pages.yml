@@ -1,4 +1,4 @@
-name: Deploy static site to GitHub Pages
+name: Sync site files for GitHub Pages
 on:
   push:
     branches: [main]
@@ -7,24 +7,25 @@ on:
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 permissions:
-  actions: read
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 concurrency:
-  group: pages
+  group: pages-sync
   cancel-in-progress: true
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  sync:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./AI-Tools-Directory
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Sync website files
+        run: |
+          mkdir -p docs
+          cp -R AI-Tools-Directory/. docs/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs
+          if git diff --cached --quiet; then
+            echo 'Pages files already up to date'
+            exit 0
+          fi
+          git commit -m 'Sync website files for GitHub Pages'
+          git push
