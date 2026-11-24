@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover 130+ AI tools for coding, images, videos, research, productivity and more at All In On AI.">
+    <meta name="description" content="Discover 127 curated AI tools for coding, images, videos, research, productivity and more at All In On AI.">
     <title>All In On AI | Discover the Best AI Tools</title>
     <!-- Preconnect to Google Fonts for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +13,64 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <main class="auth-screen" id="authGate">
+        <div class="auth-layout">
+            <section class="auth-intro">
+                <a href="/" class="auth-logo">
+                    <span class="auth-logo-mark" aria-hidden="true">AI</span>
+                    <span>All In On AI</span>
+                </a>
+                <span class="auth-eyebrow">YOUR AI TOOL DIRECTORY</span>
+                <h1>One place to find the right AI tool.</h1>
+                <p>Sign in or create an account to continue. A one-time ₹299 membership unlocks the curated directory.</p>
+                <ul class="auth-benefits">
+                    <li>127 curated AI tools</li>
+                    <li>13 categories for work and creativity</li>
+                    <li>Clear free, freemium, and paid labels</li>
+                </ul>
+                <p class="auth-disclaimer">Third-party AI services may require their own accounts or subscriptions.</p>
+            </section>
+
+            <section class="auth-card" aria-labelledby="authTitle">
+                <div class="auth-tabs" role="tablist" aria-label="Account options">
+                    <button class="auth-tab active" id="loginTab" type="button" role="tab" aria-selected="true">Log in</button>
+                    <button class="auth-tab" id="signupTab" type="button" role="tab" aria-selected="false">Create account</button>
+                </div>
+                <h2 id="authTitle">Welcome back</h2>
+                <p class="auth-card-subtitle" id="authSubtitle">Log in to continue to All In On AI.</p>
+
+                <form id="authForm">
+                    <label class="auth-label" for="authEmail">Email address</label>
+                    <input class="auth-input" id="authEmail" name="email" type="email" autocomplete="email" required>
+                    <label class="auth-label" for="authPassword">Password</label>
+                    <input class="auth-input" id="authPassword" name="password" type="password" autocomplete="current-password" minlength="8" required>
+                    <button class="auth-submit" id="authSubmit" type="submit">Log in</button>
+                </form>
+
+                <button class="google-signin" id="googleSignIn" type="button">
+                    <span class="google-mark" aria-hidden="true">G</span>
+                    Continue with Google
+                </button>
+                <button class="auth-link" id="forgotPassword" type="button">Forgot password?</button>
+                <p class="auth-message" id="authMessage" role="status" aria-live="polite"></p>
+
+                <section class="membership-panel" id="membershipPanel" hidden aria-labelledby="membershipTitle">
+                    <span class="auth-eyebrow">ONE-TIME MEMBERSHIP</span>
+                    <h2 id="membershipTitle">Unlock the directory</h2>
+                    <p>Pay ₹299 once through Razorpay Checkout. Access is enabled only after the payment is verified.</p>
+                    <button class="auth-submit" id="checkoutButton" type="button">Pay ₹299 securely</button>
+                    <p class="auth-message" id="paymentMessage" role="status" aria-live="polite"></p>
+                </section>
+
+                <div class="auth-account" id="accountPanel" hidden>
+                    <p id="accountEmail"></p>
+                    <button class="auth-link" id="logoutButton" type="button">Log out</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="memberSite" hidden>
     <!-- Scroll progress indicator at top of page -->
     <div class="progress-bar" id="progressBar"></div>
 
@@ -47,6 +105,7 @@
                 <a href="#design" class="nav-link">Design</a>
                 <a href="#games" class="nav-link">Games</a>
                 <a href="#business" class="nav-link">Productivity</a>
+                <button class="nav-signout" id="memberLogout" type="button">Log out</button>
             </div>
             
             <!-- Mobile Menu Toggle -->
@@ -70,12 +129,12 @@
         <div class="hero-content">
             <span class="hero-badge reveal">✦ THE ULTIMATE AI DISCOVERY PLATFORM</span>
             <h1 class="hero-title reveal">Discover the Best <span class="highlight">AI Tools</span> for Every Task</h1>
-            <p class="hero-subtitle reveal">Explore 130+ curated AI tools across 13 categories. Find the perfect tool for coding, design, writing, research, and more.</p>
+            <p class="hero-subtitle reveal">Explore 127 curated AI tools across 13 categories. Find the perfect tool for coding, design, writing, research, and more.</p>
             
             <!-- Animated Statistics Counter -->
             <div class="hero-stats reveal">
                 <div class="stat">
-                    <span class="stat-number" data-count="130">0</span>
+                    <span class="stat-number" data-count="127">0</span>
                     <span class="stat-label">AI Tools</span>
                 </div>
                 <div class="stat">
@@ -237,22 +296,6 @@
         </section>
     </main>
 
-    <section class="payment-section" id="payment" aria-labelledby="payment-title">
-        <div class="payment-panel">
-            <div class="payment-copy">
-                <span class="payment-eyebrow">UPI PAYMENT</span>
-                <h2 id="payment-title">Pay with any UPI app</h2>
-                <p>Scan the Razorpay QR code to make a UPI payment. Enter and confirm the amount in your UPI app before paying.</p>
-                <p class="payment-notice">This QR payment is not verified automatically and does not include subscriptions to the third-party AI tools listed on this site. Check the recipient name in your UPI app before confirming.</p>
-                <a class="payment-contact" href="mailto:angadbhaskar58@gmail.com?subject=UPI%20payment%20confirmation">Email payment reference</a>
-            </div>
-            <figure class="payment-qr-card">
-                <img src="assets/payment-qr.jpeg" alt="Razorpay UPI QR code for All In On AI">
-                <figcaption>Scan &amp; pay with any UPI app</figcaption>
-            </figure>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -288,7 +331,6 @@
                         <li><a href="#builders">Website Builders</a></li>
                         <li><a href="#automation">Automation</a></li>
                         <li><a href="#models">Models & APIs</a></li>
-                        <li><a href="#payment">UPI Payment</a></li>
                     </ul>
                 </div>
             </div>
@@ -312,336 +354,9 @@
             </div>
         </div>
     </footer>
+    </div>
 
-    <script>
-        // ============================================
-        // TOOLS DATA - All 130+ AI tools organized by category
-        // Each tool: name, description, URL, pricing tier, domain (for favicon)
-        // ============================================
-        const toolsData = {
-            chatbots: [
-                { name: "ChatGPT", desc: "AI chatbot, coding, writing and problem solving.", url: "https://chatgpt.com", pricing: "freemium", domain: "openai.com" },
-                { name: "Google Gemini", desc: "AI assistant, research and multimodal intelligence.", url: "https://gemini.google.com", pricing: "freemium", domain: "google.com" },
-                { name: "Claude AI", desc: "Advanced reasoning, coding and writing.", url: "https://claude.ai", pricing: "freemium", domain: "claude.com" },
-                { name: "Microsoft Copilot", desc: "AI assistant and Microsoft productivity.", url: "https://copilot.microsoft.com", pricing: "freemium", domain: "microsoft.com" },
-                { name: "DeepSeek", desc: "Reasoning, mathematics and coding AI.", url: "https://chat.deepseek.com", pricing: "free", domain: "deepseek.com" },
-                { name: "Grok", desc: "AI assistant with real-time information features.", url: "https://grok.com", pricing: "freemium", domain: "x.com" },
-                { name: "Meta AI", desc: "Conversational AI assistant.", url: "https://www.meta.ai", pricing: "free", domain: "meta.ai" },
-                { name: "Perplexity AI", desc: "AI search engine and research assistant.", url: "https://www.perplexity.ai", pricing: "freemium", domain: "perplexity.ai" },
-                { name: "Poe AI", desc: "Access different AI models in one place.", url: "https://poe.com", pricing: "freemium", domain: "poe.com" },
-                { name: "Character AI", desc: "AI characters and conversations.", url: "https://character.ai", pricing: "freemium", domain: "character.ai" },
-                { name: "Hugging Face", desc: "Open-source models and AI community.", url: "https://huggingface.co", pricing: "freemium", domain: "huggingface.co" },
-                { name: "Mistral AI", desc: "AI chat and open models.", url: "https://chat.mistral.ai", pricing: "freemium", domain: "mistral.ai" },
-                { name: "Qwen AI", desc: "AI chat, reasoning and multimodal models.", url: "https://chat.qwen.ai", pricing: "free", domain: "qwen.ai" },
-                { name: "Kimi AI", desc: "AI research, documents and coding.", url: "https://www.kimi.com", pricing: "freemium", domain: "kimi.com" }
-            ],
-            coding: [
-                { name: "Cursor", desc: "AI-powered code editor.", url: "https://cursor.com", pricing: "freemium", domain: "cursor.com" },
-                { name: "GitHub Copilot", desc: "AI code completion and programming assistant.", url: "https://github.com/features/copilot", pricing: "freemium", domain: "github.com" },
-                { name: "Windsurf", desc: "AI coding IDE and agent.", url: "https://windsurf.com", pricing: "freemium", domain: "windsurf.com" },
-                { name: "Replit AI", desc: "Build and deploy applications with AI.", url: "https://replit.com", pricing: "freemium", domain: "replit.com" },
-                { name: "Bolt.new", desc: "AI-powered website and app development.", url: "https://bolt.new", pricing: "freemium", domain: "bolt.new" },
-                { name: "Lovable", desc: "Build full-stack apps using AI prompts.", url: "https://lovable.dev", pricing: "freemium", domain: "lovable.dev" },
-                { name: "v0", desc: "AI UI and frontend code generation.", url: "https://v0.app", pricing: "freemium", domain: "v0.app" },
-                { name: "Tabnine", desc: "AI code completion.", url: "https://www.tabnine.com", pricing: "paid", domain: "tabnine.com" },
-                { name: "Blackbox AI", desc: "AI coding and developer tools.", url: "https://www.blackbox.ai", pricing: "freemium", domain: "blackbox.ai" },
-                { name: "Sourcegraph Cody", desc: "AI coding and codebase understanding.", url: "https://sourcegraph.com", pricing: "freemium", domain: "sourcegraph.com" },
-                { name: "Claude Code", desc: "AI agent for terminal-based coding.", url: "https://claude.com/product/claude-code", pricing: "paid", domain: "claude.com" },
-                { name: "OpenAI Codex", desc: "AI software engineering agent.", url: "https://chatgpt.com/codex", pricing: "freemium", domain: "openai.com" },
-                { name: "Google AI Studio", desc: "Build AI applications and test Gemini models.", url: "https://aistudio.google.com", pricing: "free", domain: "google.com" },
-                { name: "Cline", desc: "Open-source AI coding agent.", url: "https://cline.bot", pricing: "free", domain: "cline.bot" },
-                { name: "Aider", desc: "AI pair programming in terminal.", url: "https://aider.chat", pricing: "free", domain: "aider.chat" }
-            ],
-            images: [
-                { name: "Midjourney", desc: "Professional AI image generation.", url: "https://www.midjourney.com", pricing: "paid", domain: "midjourney.com" },
-                { name: "DALL-E", desc: "AI image creation through ChatGPT.", url: "https://chatgpt.com", pricing: "freemium", domain: "openai.com" },
-                { name: "Leonardo AI", desc: "AI art, assets and game images.", url: "https://leonardo.ai", pricing: "freemium", domain: "leonardo.ai" },
-                { name: "Ideogram", desc: "AI image generation and typography.", url: "https://ideogram.ai", pricing: "freemium", domain: "ideogram.ai" },
-                { name: "Adobe Firefly", desc: "AI creative image editing and generation.", url: "https://firefly.adobe.com", pricing: "freemium", domain: "adobe.com" },
-                { name: "Playground AI", desc: "AI images and graphic design.", url: "https://playground.com", pricing: "freemium", domain: "playground.com" },
-                { name: "Canva AI", desc: "AI design and image creation.", url: "https://www.canva.com", pricing: "freemium", domain: "canva.com" },
-                { name: "NightCafe", desc: "AI-generated digital artwork.", url: "https://nightcafe.studio", pricing: "freemium", domain: "nightcafe.studio" },
-                { name: "Recraft AI", desc: "AI vector graphics and illustrations.", url: "https://www.recraft.ai", pricing: "freemium", domain: "recraft.ai" },
-                { name: "Freepik AI", desc: "AI images, editing and creative assets.", url: "https://www.freepik.com/ai", pricing: "freemium", domain: "freepik.com" }
-            ],
-            videos: [
-                { name: "Sora", desc: "AI video generation.", url: "https://sora.com", pricing: "paid", domain: "sora.com" },
-                { name: "Runway", desc: "AI cinematic video generation and editing.", url: "https://runwayml.com", pricing: "freemium", domain: "runwayml.com" },
-                { name: "Kling AI", desc: "AI video and image animation.", url: "https://klingai.com", pricing: "freemium", domain: "klingai.com" },
-                { name: "Pika", desc: "AI video effects and generation.", url: "https://pika.art", pricing: "freemium", domain: "pika.art" },
-                { name: "HeyGen", desc: "AI avatar and talking videos.", url: "https://www.heygen.com", pricing: "freemium", domain: "heygen.com" },
-                { name: "Synthesia", desc: "AI presenter and business videos.", url: "https://www.synthesia.io", pricing: "freemium", domain: "synthesia.io" },
-                { name: "Luma AI", desc: "AI video and visual generation.", url: "https://lumalabs.ai", pricing: "freemium", domain: "lumalabs.ai" },
-                { name: "InVideo AI", desc: "Text-to-video creation.", url: "https://invideo.io", pricing: "freemium", domain: "invideo.io" },
-                { name: "VEED AI", desc: "Online video editing and AI tools.", url: "https://www.veed.io", pricing: "freemium", domain: "veed.io" },
-                { name: "Descript", desc: "AI audio and video editing.", url: "https://www.descript.com", pricing: "freemium", domain: "descript.com" },
-                { name: "CapCut", desc: "Video editing and AI effects.", url: "https://www.capcut.com", pricing: "freemium", domain: "capcut.com" }
-            ],
-            voice: [
-                { name: "ElevenLabs", desc: "AI voice generation and cloning.", url: "https://elevenlabs.io", pricing: "freemium", domain: "elevenlabs.io" },
-                { name: "Murf AI", desc: "Professional AI voiceovers.", url: "https://murf.ai", pricing: "freemium", domain: "murf.ai" },
-                { name: "Speechify", desc: "Text-to-speech and AI reading.", url: "https://speechify.com", pricing: "freemium", domain: "speechify.com" },
-                { name: "Suno AI", desc: "AI music and song generation.", url: "https://suno.com", pricing: "freemium", domain: "suno.com" },
-                { name: "Udio", desc: "AI music creation.", url: "https://www.udio.com", pricing: "freemium", domain: "udio.com" },
-                { name: "AIVA", desc: "AI-generated musical compositions.", url: "https://www.aiva.ai", pricing: "freemium", domain: "aiva.ai" },
-                { name: "Adobe Podcast", desc: "AI audio enhancement and podcast tools.", url: "https://podcast.adobe.com", pricing: "freemium", domain: "adobe.com" },
-                { name: "Krisp AI", desc: "AI noise cancellation.", url: "https://krisp.ai", pricing: "freemium", domain: "krisp.ai" }
-            ],
-            research: [
-                { name: "NotebookLM", desc: "AI research from your own documents.", url: "https://notebooklm.google.com", pricing: "free", domain: "google.com" },
-                { name: "Elicit", desc: "AI-powered academic research.", url: "https://elicit.com", pricing: "freemium", domain: "elicit.com" },
-                { name: "Consensus", desc: "Research answers from scientific papers.", url: "https://consensus.app", pricing: "freemium", domain: "consensus.app" },
-                { name: "SciSpace", desc: "Understand academic research papers.", url: "https://scispace.com", pricing: "freemium", domain: "scispace.com" },
-                { name: "ChatPDF", desc: "Chat with PDF documents.", url: "https://www.chatpdf.com", pricing: "freemium", domain: "chatpdf.com" },
-                { name: "ResearchRabbit", desc: "Discover and organize research papers.", url: "https://www.researchrabbit.ai", pricing: "free", domain: "researchrabbit.ai" },
-                { name: "Wolfram Alpha", desc: "Mathematical and scientific computation.", url: "https://www.wolframalpha.com", pricing: "freemium", domain: "wolframalpha.com" },
-                { name: "Khanmigo", desc: "AI learning assistant.", url: "https://www.khanacademy.org/khan-labs", pricing: "paid", domain: "khanacademy.org" }
-            ],
-            writing: [
-                { name: "Grammarly", desc: "Grammar correction and AI writing.", url: "https://www.grammarly.com", pricing: "freemium", domain: "grammarly.com" },
-                { name: "QuillBot", desc: "Paraphrasing and summarization.", url: "https://quillbot.com", pricing: "freemium", domain: "quillbot.com" },
-                { name: "Jasper AI", desc: "Marketing and content generation.", url: "https://www.jasper.ai", pricing: "paid", domain: "jasper.ai" },
-                { name: "Copy.ai", desc: "AI marketing and business writing.", url: "https://www.copy.ai", pricing: "freemium", domain: "copy.ai" },
-                { name: "Writesonic", desc: "SEO and AI content creation.", url: "https://writesonic.com", pricing: "freemium", domain: "writesonic.com" },
-                { name: "Rytr", desc: "AI writing assistant.", url: "https://rytr.me", pricing: "freemium", domain: "rytr.me" },
-                { name: "Wordtune", desc: "Rewrite and improve sentences.", url: "https://www.wordtune.com", pricing: "freemium", domain: "wordtune.com" },
-                { name: "Notion AI", desc: "AI-powered notes and productivity.", url: "https://www.notion.com/product/ai", pricing: "paid", domain: "notion.com" }
-            ],
-            builders: [
-                { name: "Framer AI", desc: "AI website design and publishing.", url: "https://www.framer.com", pricing: "freemium", domain: "framer.com" },
-                { name: "Webflow AI", desc: "Website building and design automation.", url: "https://webflow.com", pricing: "freemium", domain: "webflow.com" },
-                { name: "Durable AI", desc: "AI-powered business websites.", url: "https://durable.co", pricing: "paid", domain: "durable.co" },
-                { name: "Wix AI", desc: "AI website builder.", url: "https://www.wix.com", pricing: "freemium", domain: "wix.com" },
-                { name: "Bubble", desc: "No-code web app development.", url: "https://bubble.io", pricing: "freemium", domain: "bubble.io" },
-                { name: "FlutterFlow", desc: "Visual mobile and web app builder.", url: "https://flutterflow.io", pricing: "freemium", domain: "flutterflow.io" },
-                { name: "Emergent", desc: "Build applications with AI agents.", url: "https://emergent.sh", pricing: "freemium", domain: "emergent.sh" },
-                { name: "Firebase Studio", desc: "AI-assisted full-stack development.", url: "https://firebase.studio", pricing: "free", domain: "firebase.google.com" },
-                { name: "Figma AI", desc: "UI/UX design and AI-assisted prototyping.", url: "https://www.figma.com", pricing: "freemium", domain: "figma.com" }
-            ],
-            automation: [
-                { name: "n8n", desc: "Workflow automation and AI agents.", url: "https://n8n.io", pricing: "freemium", domain: "n8n.io" },
-                { name: "Zapier", desc: "Connect apps and automate workflows.", url: "https://zapier.com", pricing: "freemium", domain: "zapier.com" },
-                { name: "Make.com", desc: "Visual workflow automation.", url: "https://www.make.com", pricing: "freemium", domain: "make.com" },
-                { name: "Dify", desc: "Build AI applications and agents.", url: "https://dify.ai", pricing: "freemium", domain: "dify.ai" },
-                { name: "Flowise", desc: "Visual LLM application builder.", url: "https://flowiseai.com", pricing: "freemium", domain: "flowiseai.com" },
-                { name: "LangChain", desc: "Framework for LLM applications.", url: "https://www.langchain.com", pricing: "free", domain: "langchain.com" },
-                { name: "CrewAI", desc: "Multi-agent AI workflows.", url: "https://www.crewai.com", pricing: "freemium", domain: "crewai.com" },
-                { name: "AutoGen", desc: "Multi-agent AI development framework.", url: "https://microsoft.github.io/autogen", pricing: "free", domain: "microsoft.com" },
-                { name: "Manus", desc: "AI autonomous agent platform.", url: "https://manus.im", pricing: "freemium", domain: "manus.im" },
-                { name: "Browser Use", desc: "AI-powered browser automation.", url: "https://browser-use.com", pricing: "freemium", domain: "browser-use.com" }
-            ],
-            models: [
-                { name: "OpenAI API", desc: "Integrate AI models into your applications.", url: "https://platform.openai.com", pricing: "paid", domain: "openai.com" },
-                { name: "Gemini API", desc: "Use Gemini models in applications.", url: "https://ai.google.dev", pricing: "freemium", domain: "google.dev" },
-                { name: "Anthropic API", desc: "Build applications with Claude models.", url: "https://console.anthropic.com", pricing: "paid", domain: "anthropic.com" },
-                { name: "Groq", desc: "Fast AI model inference and API.", url: "https://groq.com", pricing: "freemium", domain: "groq.com" },
-                { name: "OpenRouter", desc: "Access multiple AI models through one API.", url: "https://openrouter.ai", pricing: "freemium", domain: "openrouter.ai" },
-                { name: "Together AI", desc: "AI inference and model hosting.", url: "https://www.together.ai", pricing: "paid", domain: "together.ai" },
-                { name: "Replicate", desc: "Run AI models using APIs.", url: "https://replicate.com", pricing: "paid", domain: "replicate.com" },
-                { name: "Ollama", desc: "Run AI models locally on your computer.", url: "https://ollama.com", pricing: "free", domain: "ollama.com" },
-                { name: "LM Studio", desc: "Run and manage local LLMs.", url: "https://lmstudio.ai", pricing: "free", domain: "lmstudio.ai" },
-                { name: "vLLM", desc: "High-performance LLM serving engine.", url: "https://vllm.ai", pricing: "free", domain: "vllm.ai" }
-            ],
-            design: [
-                { name: "Figma AI", desc: "UI/UX design and AI-assisted prototyping.", url: "https://www.figma.com", pricing: "freemium", domain: "figma.com" },
-                { name: "Framer AI", desc: "AI website design and publishing.", url: "https://www.framer.com", pricing: "freemium", domain: "framer.com" },
-                { name: "Uizard", desc: "AI-powered UI design from text.", url: "https://uizard.io", pricing: "freemium", domain: "uizard.io" },
-                { name: "Galileo AI", desc: "Generate UI designs from prompts.", url: "https://www.usegalileo.ai", pricing: "freemium", domain: "usegalileo.ai" },
-                { name: "Visily", desc: "AI wireframing and prototyping.", url: "https://www.visily.ai", pricing: "freemium", domain: "visily.ai" },
-                { name: "Magician", desc: "AI design assistant for Figma.", url: "https://magician.design", pricing: "freemium", domain: "magician.design" },
-                { name: "Diagram", desc: "AI-powered design tools.", url: "https://diagram.com", pricing: "freemium", domain: "diagram.com" },
-                { name: "Khroma", desc: "AI color palette generator.", url: "https://khroma.co", pricing: "free", domain: "khroma.co" }
-            ],
-            games: [
-                { name: "Rosebud AI", desc: "AI game development platform.", url: "https://rosebud.ai", pricing: "freemium", domain: "rosebud.ai" },
-                { name: "Scenario", desc: "AI game asset generation.", url: "https://www.scenario.com", pricing: "freemium", domain: "scenario.com" },
-                { name: "Leonardo AI", desc: "AI art, assets and game images.", url: "https://leonardo.ai", pricing: "freemium", domain: "leonardo.ai" },
-                { name: "Ludo AI", desc: "AI game ideation and design.", url: "https://ludo.ai", pricing: "freemium", domain: "ludo.ai" },
-                { name: "Inworld AI", desc: "AI NPCs and character engines.", url: "https://www.inworld.ai", pricing: "freemium", domain: "inworld.ai" },
-                { name: "Convai", desc: "Conversational AI for virtual worlds.", url: "https://convai.com", pricing: "freemium", domain: "convai.com" },
-                { name: "Modl.ai", desc: "AI game testing and QA.", url: "https://modl.ai", pricing: "paid", domain: "modl.ai" },
-                { name: "Promethean AI", desc: "AI-assisted virtual world building.", url: "https://prometheanai.com", pricing: "freemium", domain: "prometheanai.com" }
-            ],
-            business: [
-                { name: "Notion AI", desc: "AI-powered notes and productivity.", url: "https://www.notion.com/product/ai", pricing: "paid", domain: "notion.com" },
-                { name: "Otter AI", desc: "AI meeting transcription and notes.", url: "https://otter.ai", pricing: "freemium", domain: "otter.ai" },
-                { name: "Fireflies", desc: "AI meeting assistant and recorder.", url: "https://fireflies.ai", pricing: "freemium", domain: "fireflies.ai" },
-                { name: "tl;dv", desc: "AI meeting recorder and summarizer.", url: "https://www.tldv.io", pricing: "freemium", domain: "tldv.io" },
-                { name: "Raycast AI", desc: "AI-powered productivity launcher.", url: "https://www.raycast.com", pricing: "freemium", domain: "raycast.com" },
-                { name: "Arc Browser", desc: "AI-powered web browser.", url: "https://arc.net", pricing: "free", domain: "arc.net" },
-                { name: "Superhuman", desc: "AI email and productivity.", url: "https://superhuman.com", pricing: "paid", domain: "superhuman.com" },
-                { name: "Linear", desc: "AI-enhanced project management.", url: "https://linear.app", pricing: "freemium", domain: "linear.app" }
-            ]
-        };
-
-        // Pricing tier labels and CSS classes
-        const pricingLabels = {
-            free: { label: "Free", class: "free" },
-            freemium: { label: "Freemium", class: "freemium" },
-            paid: { label: "Paid", class: "paid" }
-        };
-
-        /**
-         * Create HTML for a single tool card
-         * @param {Object} tool - Tool data object
-         * @param {number} index - Index for staggered animation delay
-         * @returns {string} HTML string for the tool card
-         */
-        function createToolCard(tool, index) {
-            const pricing = pricingLabels[tool.pricing] || pricingLabels.freemium;
-            // Google favicon service for consistent logos
-            const faviconUrl = `https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`;
-            return `
-                <article class="tool-card reveal" style="transition-delay: ${Math.min(index, 8) * 32}ms">
-                    <div class="tool-card-header">
-                        <!-- Tool logo with fallback if favicon fails -->
-                        <img src="${faviconUrl}" alt="${tool.name} logo" loading="lazy" width="48" height="48" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                        <div class="tool-favicon-fallback" style="display:none; width:48px; height:48px; border-radius:12px; background:var(--gradient-primary); align-items:center; justify-content:center; color:white; font-weight:700; font-size:18px;">${tool.name.charAt(0)}</div>
-                        <!-- Pricing badge -->
-                        <span class="tool-badge ${pricing.class}">${pricing.label}</span>
-                    </div>
-                    <h3 class="tool-name">${tool.name}</h3>
-                    <p class="tool-desc">${tool.desc}</p>
-                    <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="tool-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-                </article>
-            `;
-        }
-
-        /**
-         * Render all tool cards into their respective category grids
-         */
-        function renderTools() {
-            Object.keys(toolsData).forEach(category => {
-                const grid = document.getElementById(`${category}Grid`);
-                if (grid) {
-                    grid.innerHTML = toolsData[category].map((tool, i) => createToolCard(tool, i)).join('');
-                }
-            });
-        }
-
-        /**
-         * Animate statistic counters on hero section
-         */
-        function animateCounters() {
-            document.querySelectorAll('.stat-number[data-count]').forEach(el => {
-                const target = parseInt(el.dataset.count);
-                let current = 0;
-                const duration = 2000;
-                const step = target / (duration / 16);
-                const timer = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        el.textContent = target + (target >= 100 ? '+' : '');
-                        clearInterval(timer);
-                    } else {
-                        el.textContent = Math.floor(current) + (target >= 100 ? '+' : '');
-                    }
-                }, 16);
-            });
-        }
-
-        // ============================================
-        // SCROLL ANIMATIONS - Intersection Observer
-        // ============================================
-        const observerOptions = { threshold: 0.08, rootMargin: '0px 0px -20px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // Trigger counter animation when hero stats come into view
-                    if (entry.target.classList.contains('hero-stats')) {
-                        animateCounters();
-                    }
-                }
-            });
-        }, observerOptions);
-
-        // ============================================
-        // SCROLL EVENT HANDLERS
-        // ============================================
-        
-        /** Update top progress bar based on scroll position */
-        function updateProgressBar() {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (scrollTop / docHeight) * 100;
-            document.getElementById('progressBar').style.width = `${progress}%`;
-        }
-
-        /** Update active nav link based on current scroll section */
-        function updateNavOnScroll() {
-            const sections = document.querySelectorAll('.category-section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 150;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
-            });
-            // Add scrolled class to nav for styling
-            const nav = document.getElementById('nav');
-            nav.classList.toggle('scrolled', window.scrollY > 50);
-        }
-
-        // Combined scroll handler for performance
-        window.addEventListener('scroll', () => {
-            updateProgressBar();
-            updateNavOnScroll();
-        });
-
-        // ============================================
-        // UI INTERACTIONS
-        // ============================================
-        
-        // Mobile menu toggle
-        document.getElementById('navToggle').addEventListener('click', function() {
-            const navLinks = document.getElementById('navLinks');
-            const expanded = this.getAttribute('aria-expanded') === 'true';
-            this.setAttribute('aria-expanded', !expanded);
-            navLinks.classList.toggle('open');
-        });
-
-        // Theme toggle with localStorage persistence
-        document.getElementById('themeToggle').addEventListener('click', function() {
-            document.body.classList.toggle('dark');
-            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-        });
-
-        // Load saved theme on page load
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark');
-        }
-
-        // Close mobile menu when clicking a nav link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('open');
-                document.getElementById('navToggle').setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        // Initial render of all tool cards
-        renderTools();
-
-        // Observe all elements with .reveal class for scroll animations
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const target = document.querySelector(targetId);
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+    <script src="site.js" defer></script>
+    <script type="module" src="auth.js"></script>
 </body>
 </html>
