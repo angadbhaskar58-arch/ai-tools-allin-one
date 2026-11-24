@@ -18,6 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Sync website files
         run: |
+          rm -rf docs
           mkdir -p docs
           cp -R AI-Tools-Directory/. docs/
           git config user.name 'github-actions[bot]'
