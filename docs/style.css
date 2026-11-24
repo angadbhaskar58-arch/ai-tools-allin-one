@@ -1,0 +1,606 @@
+/* ============================================
+   AI TOOLS DIRECTORY - CSS STYLESHEET
+   Modern design system with scroll animations
+   ============================================ */
+
+/* ============================================
+   CSS CUSTOM PROPERTIES (Design Tokens)
+   ============================================ */
+:root {
+    --primary: #635bff;           /* Primary brand color */
+    --primary-dark: #4d46d8;      /* Darker shade for hover states */
+    --ink: #111827;               /* Main text color (dark mode: light) */
+    --muted: #667085;             /* Secondary/muted text color */
+    --canvas: #f7f8fc;            /* Page background color */
+    --surface: #ffffff;           /* Card/panel background color */
+    --line: #e8eaf0;              /* Border/divider color */
+    --gradient-primary: linear-gradient(135deg, #635bff, #8b5cf6); /* Primary gradient */
+}
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;  /* Smooth scrolling for anchor links */
+}
+
+body {
+    font-family: "Inter", sans-serif;  /* Modern, clean typography */
+    color: var(--ink);
+    background: var(--canvas);
+    line-height: 1.6;
+    transition: background .25s, color .25s;  /* Smooth theme transition */
+}
+
+/* ============================================
+   SCROLL PROGRESS BAR
+   ============================================ */
+.progress-bar {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+    position: relative;
+    min-height: 620px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: #111827;
+    color: white;
+}
+
+/* Animated gradient background with subtle pattern */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 78% 18%, rgba(99,91,255,.30), transparent 28%),
+        radial-gradient(circle at 18% 84%, rgba(139,92,246,.18), transparent 24%);
+}
+.hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .12;
+    background-image: radial-gradient(rgba(255,255,255,.7) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: linear-gradient(to bottom, black, transparent 82%);
+}
+
+/* ============================================
+   NAVIGATION BAR
+   ============================================ */
+.nav {
+    position: fixed;
+    z-index: 90;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 0 5%;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    color: white;
+    transition: .25s;
+}
+
+/* Scrolled state - white background with blur */
+.nav.scrolled {
+    background: rgba(255,255,255,.94);
+    border-color: var(--line);
+    color: var(--ink);
+    box-shadow: 0 8px 30px rgba(15,23,42,.07);
+    backdrop-filter: blur(14px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: none;
+    color: inherit;
+    text-decoration: none;
+}
+
+.logo-icon { width: 32px; height: 32px; color: #7269ff; }
+.logo-text { font-size: 15px; font-weight: 700; }
+
+/* Desktop navigation links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-left: auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+
+.nav-link {
+    flex: none;
+    padding: 7px 9px;
+    border-radius: 8px;
+    color: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    opacity: .78;
+    text-decoration: none;
+    transition: .2s;
+}
+.nav-link:hover,
+.nav-link.active {
+    background: rgba(99,91,255,.12);
+    color: #8f88ff;
+    opacity: 1;
+}
+.nav.scrolled .nav-link.active { color: var(--primary); }
+
+/* Theme toggle and mobile menu button */
+.theme-toggle,
+.nav-toggle {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    flex: none;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 10px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+.nav.scrolled .theme-toggle,
+.nav.scrolled .nav-toggle {
+    border-color: var(--line);
+}
+.theme-toggle svg { width: 18px; height: 18px; }
+.moon-icon { display: none; }
+.nav-toggle { display: none; }
+
+/* ============================================
+   HERO CONTENT
+   ============================================ */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 120px 24px 70px;
+    text-align: center;
+}
+
+.hero-badge {
+    display: inline-flex;
+    margin-bottom: 22px;
+    padding: 7px 12px;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 999px;
+    background: rgba(255,255,255,.06);
+    color: #c9cdf7;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+}
+
+.hero-title {
+    max-width: 820px;
+    margin: auto;
+    font-size: clamp(44px, 7vw, 78px);
+    line-height: 1.02;
+    letter-spacing: -.055em;
+}
+.highlight { color: #9b95ff; }
+
+.hero-subtitle {
+    max-width: 680px;
+    margin: 24px auto 34px;
+    color: #c1cad8;
+    font-size: clamp(16px, 2vw, 19px);
+}
+
+/* Statistics counter row */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 34px;
+}
+.stat {
+    min-width: 145px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 22px;
+    border-right: 1px solid rgba(255,255,255,.12);
+}
+.stat:last-child { border-right: 0; }
+.stat-number { font-size: 22px; font-weight: 700; }
+.stat-label { color: #99a5b7; font-size: 12px; }
+
+/* CTA Button */
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 20px;
+    border-radius: 10px;
+    background: var(--gradient-primary);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 14px 35px rgba(99,91,255,.28);
+}
+
+/* Scroll down indicator */
+.hero-scroll {
+    position: absolute;
+    z-index: 2;
+    bottom: 22px;
+    left: 50%;
+    width: 34px;
+    height: 34px;
+    transform: translateX(-50%);
+    color: #9ba7ba;
+}
+.hero-scroll svg { width: 100%; height: 100%; }
+
+/* ============================================
+   MAIN CONTENT & SECTIONS
+   ============================================ */
+.main {
+    max-width: 1180px;
+    margin: auto;
+    padding: 72px 24px 30px;
+}
+
+.category-section {
+    margin-bottom: 64px;
+    padding-top: 12px;
+    scroll-margin-top: 88px;  /* Offset for fixed nav */
+}
+
+.section-header {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    align-items: end;
+    margin-bottom: 20px;
+}
+.section-number {
+    grid-row: 1 / 3;
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+}
+.section-title {
+    font-size: clamp(22px, 3vw, 28px);
+    line-height: 1.2;
+    letter-spacing: -.03em;
+}
+.section-desc {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Tools Grid - 4 columns desktop */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+/* ============================================
+   TOOL CARD
+   ============================================ */
+.tool-card {
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s;
+}
+.tool-card:hover {
+    transform: translateY(-7px) scale(1.012);
+    border-color: #d6d3ff;
+    box-shadow: 0 18px 42px rgba(36,42,71,.12);
+}
+
+.tool-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+.tool-card-header img {
+    width: 48px;
+    height: 48px;
+    padding: 7px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    object-fit: contain;
+    background: #fafbfe;
+}
+
+.tool-badge {
+    align-self: start;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 800;
+}
+.tool-badge.free { background: #dcfce7; color: #166534; }
+.tool-badge.freemium { background: #eeecff; color: #5548c8; }
+.tool-badge.paid { background: #fee2e2; color: #991b1b; }
+
+.tool-name {
+    font-size: 16px;
+    line-height: 1.3;
+}
+.tool-desc {
+    flex: 1;
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.tool-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    margin-top: 16px;
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.tool-link svg { width: 14px; height: 14px; }
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================ */
+
+/* Base reveal state - hidden and blurred */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px) scale(.985);
+    filter: blur(5px);
+    transition:
+        opacity .42s cubic-bezier(.2,.8,.2,1),
+        transform .42s cubic-bezier(.2,.8,.2,1),
+        filter .42s cubic-bezier(.2,.8,.2,1);
+}
+
+/* Visible state - animated in */
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+/* Section header slides from left */
+.category-section .section-header.reveal {
+    transform: translateX(-18px);
+}
+.category-section .section-header.reveal.visible {
+    transform: translateX(0);
+}
+
+/* Tool cards with enhanced entrance animation */
+.tool-card.reveal {
+    transform: translateY(22px) scale(.94);
+    filter: blur(3px);
+    will-change: transform, opacity;
+}
+.tool-card.reveal.visible {
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    margin-top: 30px;
+    background: #111827;
+    color: #bdc6d4;
+}
+.footer-content {
+    max-width: 1180px;
+    margin: auto;
+    padding: 52px 24px 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+.footer-brand p {
+    max-width: 380px;
+    margin-top: 14px;
+    font-size: 13px;
+}
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+.footer-column h4 {
+    color: white;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+.footer-column ul { list-style: none; }
+.footer-column a {
+    color: #aeb8c7;
+    font-size: 12px;
+    text-decoration: none;
+}
+.footer-column a:hover { color: white; }
+
+.footer-bottom {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,.08);
+    font-size: 11px;
+}
+
+.footer-contact {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 4px;
+    color: #d8deea;
+    font-size: 13px;
+    text-align: center;
+}
+.footer-contact strong { color: white; }
+.footer-contact a {
+    color: #aaa4ff;
+    text-decoration: none;
+}
+.footer-contact a:hover { color: white; }
+.footer-repo {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+.footer-repo a {
+    color: #aaa4ff;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.footer-repo a:hover { color: white; }
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+body.dark {
+    --ink: #edf1f7;
+    --muted: #aab4c3;
+    --canvas: #0d1320;
+    --surface: #151d2d;
+    --line: #263248;
+}
+body.dark .nav.scrolled { background: rgba(13,19,32,.94); }
+body.dark .tool-card-header img { background: #1d2638; }
+body.dark .tool-card:hover { border-color: #4d46a8; }
+body.dark .nav.scrolled .nav-link { color: #c4cbd7; }
+body.dark .sun-icon { display: none; }
+body.dark .moon-icon { display: block; }
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Tablet - 3 columns */
+@media (max-width: 980px) {
+    .tools-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .nav-links { max-width: 58%; }
+}
+
+/* Mobile - 2 columns, hamburger menu */
+@media (max-width: 720px) {
+    .hero { min-height: 590px; }
+    .nav { height: 64px; padding: 0 16px; }
+    .nav-toggle { display: grid; margin-left: auto; }
+    
+    /* Hamburger icon */
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+        display: block;
+        width: 17px;
+        height: 2px;
+        content: "";
+        background: currentColor;
+    }
+    .hamburger { position: relative; }
+    .hamburger::before { position: absolute; top: -6px; }
+    .hamburger::after { position: absolute; top: 6px; }
+
+    /* Mobile nav drawer */
+    .nav-links {
+        position: absolute;
+        top: 64px;
+        left: 12px;
+        right: 12px;
+        max-width: none;
+        display: none;
+        margin: 0;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: white;
+        box-shadow: 0 16px 40px rgba(15,23,42,.12);
+    }
+    .nav-links.open { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .nav-links .nav-link { color: var(--ink); }
+
+    .hero-content { padding: 110px 18px 60px; }
+    .hero-title { font-size: 43px; }
+    .hero-subtitle { font-size: 16px; }
+    .stat { min-width: 0; flex: 1; padding: 0 8px; }
+    .stat-number { font-size: 17px; }
+    .stat-label { font-size: 10px; }
+    .main { padding: 48px 14px 20px; }
+    .category-section { margin-bottom: 42px; }
+    .section-header { grid-template-columns: 38px 1fr; }
+    .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .tool-card { min-height: 200px; padding: 12px; }
+    .tool-card-header img { width: 42px; height: 42px; }
+    .footer-content { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 5px; }
+    .footer-contact { flex-direction: column; gap: 2px; }
+}
+
+/* Small mobile - single column */
+@media (max-width: 420px) {
+    .tools-grid { grid-template-columns: 1fr; }
+    .tool-card { min-height: 185px; }
+    .hero-title { font-size: 38px; }
+    .logo-text { display: none; }
+}
+
+/* ============================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal,
+    .tool-card.reveal,
+    .category-section .section-header.reveal {
+        opacity: 1;
+        filter: none;
+        transform: none;
+        transition: none;
+    }
+    .tool-card,
+    .hero-cta {
+        transition: none;
+    }
+}
